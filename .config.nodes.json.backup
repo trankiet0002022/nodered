@@ -662,5 +662,137 @@
                 "file": "D:\\node-red-host\\node_modules\\node-red-dashboard\\nodes\\ui_spacer.js"
             }
         }
+    },
+    "node-red-contrib-aedes": {
+        "name": "node-red-contrib-aedes",
+        "version": "0.8.2",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "aedes-mqtt-broker": {
+                "name": "aedes-mqtt-broker",
+                "types": [
+                    "aedes broker"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-aedes",
+                "file": "D:\\node-red-host\\node_modules\\node-red-contrib-aedes\\aedes.js"
+            }
+        }
+    },
+    "node-red-mongodb": {
+        "name": "node-red-mongodb",
+        "version": "0.0.18",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "mongo": {
+                "name": "mongo",
+                "types": [
+                    "mongodb",
+                    "mongodb out",
+                    "mongodb in"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-mongodb",
+                "file": "D:\\node-red-host\\node_modules\\node-red-mongodb\\66-mongodb.js"
+            }
+        }
+    },
+    "@node-red-tools/node-red-contrib-mongodb": {
+        "name": "@node-red-tools/node-red-contrib-mongodb",
+        "version": "1.3.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "mongodb-collection": {
+                "name": "mongodb-collection",
+                "types": [
+                    "mongodb-collection"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@node-red-tools/node-red-contrib-mongodb",
+                "file": "D:\\node-red-host\\node_modules\\@node-red-tools\\node-red-contrib-mongodb\\lib\\mongodb-collection.js"
+            },
+            "mongodb-config": {
+                "name": "mongodb-config",
+                "types": [
+                    "mongodb-config"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@node-red-tools/node-red-contrib-mongodb",
+                "file": "D:\\node-red-host\\node_modules\\@node-red-tools\\node-red-contrib-mongodb\\lib\\mongodb-config.js"
+            },
+            "mongodb-objectid": {
+                "name": "mongodb-objectid",
+                "types": [
+                    "mongodb-objectid"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@node-red-tools/node-red-contrib-mongodb",
+                "file": "D:\\node-red-host\\node_modules\\@node-red-tools\\node-red-contrib-mongodb\\lib\\mongodb-objectid.js"
+            },
+            "mongodb-ping": {
+                "name": "mongodb-ping",
+                "types": [
+                    "mongodb-ping"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "@node-red-tools/node-red-contrib-mongodb",
+                "file": "D:\\node-red-host\\node_modules\\@node-red-tools\\node-red-contrib-mongodb\\lib\\mongodb-ping.js"
+            }
+        }
+    },
+    "node-red-contrib-mongodb-aleph": {
+        "name": "node-red-contrib-mongodb-aleph",
+        "version": "0.3.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "mongo": {
+                "name": "mongo",
+                "types": [
+                    "mongodb-aleph-config",
+                    "mongodb-aleph-out",
+                    "mongodb-aleph-in"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-mongodb-aleph",
+                "file": "D:\\node-red-host\\node_modules\\node-red-contrib-mongodb-aleph\\mongodb.js"
+            }
+        }
+    },
+    "node-red-contrib-time_interval": {
+        "name": "node-red-contrib-time_interval",
+        "version": "1.0.3",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "time_interval": {
+                "name": "time_interval",
+                "types": [
+                    "time_interval"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-time_interval",
+                "file": "D:\\node-red-host\\node_modules\\node-red-contrib-time_interval\\node.js"
+            }
+        }
     }
 }

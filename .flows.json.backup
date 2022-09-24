@@ -202,6 +202,45 @@
         "sessionExpiry": ""
     },
     {
+        "id": "d8155337346fe797",
+        "type": "mongodb",
+        "hostname": "mongodb+srv://tranhuy002023:0949326546Aa@cluster0.khxudmo.mongodb.net/DIEN_MAT_TROI?retryWrites=true&w=majority",
+        "port": "27017",
+        "db": "DIEN_MAT_TROI",
+        "name": "HAHA"
+    },
+    {
+        "id": "10b31caf7dfed95c",
+        "type": "mongodb-config",
+        "name": "MongoDB",
+        "host": "mongodb+srv://tranhuy002023:0949326546Aa@cluster0.khxudmo.mongodb.net/DIEN_MAT_TROI?retryWrites=true&w=majority",
+        "port": "27015",
+        "database": "DIEN_MAT_TROI",
+        "collections": [
+            {
+                "name": "BANG 1",
+                "optionsType": "json",
+                "options": "{}",
+                "autoCreate": false,
+                "autoCreateOptionsType": "json",
+                "autoCreateOptions": "{}",
+                "autoCreateIndexesType": "json",
+                "autoCreateIndexes": "[]"
+            }
+        ],
+        "options": ""
+    },
+    {
+        "id": "151d5bb044d8af6d",
+        "type": "mongodb-aleph-config",
+        "hostname": "cluster0.khxudmo.mongodb.net",
+        "topology": "dnscluster",
+        "connectOptions": "",
+        "port": "27017",
+        "db": "bai1",
+        "name": "Mongo DB"
+    },
+    {
         "id": "6714c573c749bece",
         "type": "aedes broker",
         "z": "0e46594e7c184d66",
@@ -240,7 +279,6 @@
         "y": 180,
         "wires": [
             [
-                "79264d2e0f1010aa",
                 "64eeb33bb8038aa4"
             ]
         ]
@@ -261,22 +299,6 @@
         "broker": "4db4869f657f6363",
         "x": 510,
         "y": 280,
-        "wires": []
-    },
-    {
-        "id": "79264d2e0f1010aa",
-        "type": "debug",
-        "z": "0e46594e7c184d66",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 510,
-        "y": 180,
         "wires": []
     },
     {
@@ -357,7 +379,92 @@
         "y": 380,
         "wires": [
             [
-                "98e1d9bc3e8c587b"
+                "98e1d9bc3e8c587b",
+                "4f037304d2875712"
+            ]
+        ]
+    },
+    {
+        "id": "207a991f7a951425",
+        "type": "mqtt in",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "topic": "anhsang",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "4db4869f657f6363",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 580,
+        "wires": [
+            [
+                "209095498395741c"
+            ]
+        ]
+    },
+    {
+        "id": "209095498395741c",
+        "type": "ui_gauge",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "group": "bdeaa1cd139496b7",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "ANH SANG",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1024",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 490,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "fd77a195b1f9dfe1",
+        "type": "mongodb-aleph-out",
+        "z": "0e46594e7c184d66",
+        "mongodb": "151d5bb044d8af6d",
+        "name": "HEHE",
+        "collection": "bang1",
+        "payonly": false,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 1230,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "185063f1a4babf8f",
+        "type": "function",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "func": "msg.topic = \"huy\";\nt = msg.payload ;\nmsg.payload = \"hello node red\";\nmsg.temp = t;\nvar d=new Date();\nmsg.time =  Date();\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 360,
+        "wires": [
+            [
+                "fd77a195b1f9dfe1"
             ]
         ]
     },
@@ -384,8 +491,297 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 490,
-        "y": 380,
+        "x": 470,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "4f037304d2875712",
+        "type": "delay",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "30",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 520,
+        "y": 360,
+        "wires": [
+            [
+                "185063f1a4babf8f"
+            ]
+        ]
+    },
+    {
+        "id": "31aba80375aa9dcb",
+        "type": "inject",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 800,
+        "y": 300,
+        "wires": [
+            [
+                "185063f1a4babf8f"
+            ]
+        ]
+    },
+    {
+        "id": "c976fbc103a8ef82",
+        "type": "mongodb-aleph-in",
+        "z": "0e46594e7c184d66",
+        "mongodb": "151d5bb044d8af6d",
+        "name": "payload",
+        "collection": "bang1",
+        "operation": "find",
+        "x": 460,
+        "y": 700,
+        "wires": [
+            [
+                "9c14eaf81979fa33"
+            ]
+        ]
+    },
+    {
+        "id": "9c14eaf81979fa33",
+        "type": "function",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "func": "//msg.payload = msg.payload[59];\nvar tong  = msg.payload;\nvar t = 0;\nvar temp = 0 ;\nfor(var i = 0 ; i < tong; i++)\n{\n    msg.payload = msg.payload[i];\n    temp = msg.payload.temp;\n    t += temp;\n}\nt = t/(tong - 1);\nmsg.payload = t;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 760,
+        "wires": [
+            [
+                "4e032dfe025d4418",
+                "355688d2526c2fe9",
+                "4da23ce561c41930"
+            ]
+        ]
+    },
+    {
+        "id": "b3ae0b1da9de48c1",
+        "type": "inject",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 700,
+        "wires": [
+            [
+                "c976fbc103a8ef82",
+                "fbef59aa1d935673"
+            ]
+        ]
+    },
+    {
+        "id": "4e032dfe025d4418",
+        "type": "function",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "func": "var temp = msg.payload.temp;\nmsg.payload = temp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1000,
+        "y": 600,
+        "wires": [
+            [
+                "9181774f650fd508"
+            ]
+        ]
+    },
+    {
+        "id": "9181774f650fd508",
+        "type": "ui_gauge",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "group": "bdeaa1cd139496b7",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1230,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "12228e1ee0fbfa5b",
+        "type": "ui_chart",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1F77B4",
+            "#AEC7E8",
+            "#FF7F0E",
+            "#2CA02C",
+            "#98DF8A",
+            "#D62728",
+            "#FF9896",
+            "#9467BD",
+            "#C5B0D5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1130,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "355688d2526c2fe9",
+        "type": "function",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "func": "var time = msg.payload.time;\nmsg.payload = time;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 720,
+        "wires": [
+            [
+                "5202a2d65977a0b5"
+            ]
+        ]
+    },
+    {
+        "id": "5202a2d65977a0b5",
+        "type": "ui_text",
+        "z": "0e46594e7c184d66",
+        "group": "bdeaa1cd139496b7",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1210,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "fbef59aa1d935673",
+        "type": "mongodb-aleph-in",
+        "z": "0e46594e7c184d66",
+        "mongodb": "151d5bb044d8af6d",
+        "name": "",
+        "collection": "bang1",
+        "operation": "count",
+        "x": 470,
+        "y": 640,
+        "wires": [
+            [
+                "9c14eaf81979fa33"
+            ]
+        ]
+    },
+    {
+        "id": "4da23ce561c41930",
+        "type": "ui_gauge",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "group": "bdeaa1cd139496b7",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "TRUNG BINH",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1000,
+        "y": 500,
         "wires": []
     }
 ]
