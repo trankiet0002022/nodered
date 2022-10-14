@@ -132,16 +132,6 @@
         "width": 6
     },
     {
-        "id": "a60bf6a22b3e95ec",
-        "type": "ui_spacer",
-        "z": "0e46594e7c184d66",
-        "name": "spacer",
-        "group": "bdeaa1cd139496b7",
-        "order": 3,
-        "width": 6,
-        "height": 1
-    },
-    {
         "id": "82bc284bb7df614c",
         "type": "websocket-listener",
         "path": "/esp8266",
@@ -179,7 +169,7 @@
         "id": "4db4869f657f6363",
         "type": "mqtt-broker",
         "name": "",
-        "broker": "tranhuy2023.cloud.shiftr.io",
+        "broker": "trankiet0002022.cloud.shiftr.io",
         "port": "1883",
         "clientid": "",
         "autoConnect": true,
@@ -233,7 +223,7 @@
     {
         "id": "151d5bb044d8af6d",
         "type": "mongodb-aleph-config",
-        "hostname": "cluster0.khxudmo.mongodb.net",
+        "hostname": "cluster0.eupqqpj.mongodb.net",
         "topology": "dnscluster",
         "connectOptions": "",
         "port": "27017",
@@ -247,7 +237,7 @@
         "name": "",
         "mqtt_port": 1883,
         "mqtt_ws_bind": "port",
-        "mqtt_ws_port": "tranhuy2023.cloud.shiftr.io",
+        "mqtt_ws_port": "trankiet0002022.cloud.shiftr.io",
         "mqtt_ws_path": "",
         "cert": "",
         "key": "",
@@ -279,7 +269,8 @@
         "y": 180,
         "wires": [
             [
-                "64eeb33bb8038aa4"
+                "64eeb33bb8038aa4",
+                "a43f8e91a5bf6da5"
             ]
         ]
     },
@@ -298,7 +289,7 @@
         "expiry": "",
         "broker": "4db4869f657f6363",
         "x": 510,
-        "y": 280,
+        "y": 220,
         "wires": []
     },
     {
@@ -306,9 +297,9 @@
         "type": "ui_switch",
         "z": "0e46594e7c184d66",
         "name": "",
-        "label": "switch",
+        "label": "ĐIỆN PHÂN",
         "tooltip": "",
-        "group": "fa8e8e5adeacfe66",
+        "group": "bdeaa1cd139496b7",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -317,17 +308,17 @@
         "topic": "topic",
         "topicType": "msg",
         "style": "",
-        "onvalue": "0",
+        "onvalue": "1",
         "onvalueType": "str",
         "onicon": "",
         "oncolor": "",
-        "offvalue": "1",
+        "offvalue": "0",
         "offvalueType": "str",
         "officon": "",
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 250,
+        "x": 270,
         "y": 280,
         "wires": [
             [
@@ -341,11 +332,11 @@
         "z": "0e46594e7c184d66",
         "name": "",
         "group": "bdeaa1cd139496b7",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
         "gtype": "gage",
-        "title": "DO AM",
+        "title": "ĐỘ ẨM",
         "label": "% ĐỘ ẨM",
         "format": "{{value}}",
         "min": 0,
@@ -355,10 +346,10 @@
             "#e6e600",
             "#ca3838"
         ],
-        "seg1": "",
-        "seg2": "",
+        "seg1": "70",
+        "seg2": "85",
         "className": "",
-        "x": 540,
+        "x": 520,
         "y": 80,
         "wires": []
     },
@@ -380,7 +371,7 @@
         "wires": [
             [
                 "98e1d9bc3e8c587b",
-                "4f037304d2875712"
+                "36df96ddac73ac6a"
             ]
         ]
     },
@@ -388,49 +379,23 @@
         "id": "207a991f7a951425",
         "type": "mqtt in",
         "z": "0e46594e7c184d66",
-        "name": "",
+        "name": "anhsang",
         "topic": "anhsang",
         "qos": "2",
-        "datatype": "auto",
+        "datatype": "utf8",
         "broker": "4db4869f657f6363",
         "nl": false,
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 240,
-        "y": 580,
+        "x": 280,
+        "y": 500,
         "wires": [
             [
-                "209095498395741c"
+                "90b3d94bb5e807fc",
+                "185063f1a4babf8f"
             ]
         ]
-    },
-    {
-        "id": "209095498395741c",
-        "type": "ui_gauge",
-        "z": "0e46594e7c184d66",
-        "name": "",
-        "group": "bdeaa1cd139496b7",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "ANH SANG",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "1024",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 490,
-        "y": 580,
-        "wires": []
     },
     {
         "id": "fd77a195b1f9dfe1",
@@ -443,8 +408,8 @@
         "upsert": false,
         "multi": false,
         "operation": "insert",
-        "x": 1230,
-        "y": 380,
+        "x": 1350,
+        "y": 320,
         "wires": [
             []
         ]
@@ -454,17 +419,17 @@
         "type": "function",
         "z": "0e46594e7c184d66",
         "name": "",
-        "func": "msg.topic = \"huy\";\nt = msg.payload ;\nmsg.payload = \"hello node red\";\nmsg.temp = t;\nvar d=new Date();\nmsg.time =  Date();\n\nreturn msg;",
+        "func": "msg.topic = \"huy\";\nvar a = msg.payload;\nvar work_GlobalTemp = global.get(\"Temp\");\nvar t = work_GlobalTemp.a;\n\nvar work_GlobalVoltage = global.get(\"Voltage\");\nvar v = work_GlobalVoltage.a;\n\nvar work_GlobalAmpe = global.get(\"Ampe\");\nvar am = work_GlobalAmpe.a;\n\nvar work_GlobalHumi = global.get(\"Humi\");\nvar doam = work_GlobalHumi.a;\n\nmsg.payload = \"hello node red\";\nmsg.temp = t;\nmsg.light = a;\nmsg.voltage = v;\nmsg.ampe = am;\nmsg.humi = doam;\nmsg.time =  Date();\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1020,
-        "y": 360,
+        "x": 860,
+        "y": 440,
         "wires": [
             [
-                "fd77a195b1f9dfe1"
+                "03653069eed494a1"
             ]
         ]
     },
@@ -474,51 +439,26 @@
         "z": "0e46594e7c184d66",
         "name": "",
         "group": "bdeaa1cd139496b7",
-        "order": 2,
+        "order": 3,
         "width": 0,
         "height": 0,
         "gtype": "gage",
-        "title": "NHIET DO",
-        "label": "DO C",
+        "title": "NHIỆT ĐỘ",
+        "label": "ĐỘ C",
         "format": "{{value}}",
         "min": 0,
-        "max": "100",
+        "max": "50",
         "colors": [
             "#00b500",
             "#e6e600",
             "#ca3838"
         ],
-        "seg1": "",
-        "seg2": "",
+        "seg1": "30",
+        "seg2": "40",
         "className": "",
-        "x": 470,
-        "y": 480,
+        "x": 530,
+        "y": 400,
         "wires": []
-    },
-    {
-        "id": "4f037304d2875712",
-        "type": "delay",
-        "z": "0e46594e7c184d66",
-        "name": "",
-        "pauseType": "rate",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "30",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": true,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 520,
-        "y": 360,
-        "wires": [
-            [
-                "185063f1a4babf8f"
-            ]
-        ]
     },
     {
         "id": "31aba80375aa9dcb",
@@ -541,8 +481,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 800,
-        "y": 300,
+        "x": 740,
+        "y": 160,
         "wires": [
             [
                 "185063f1a4babf8f"
@@ -557,8 +497,8 @@
         "name": "payload",
         "collection": "bang1",
         "operation": "find",
-        "x": 460,
-        "y": 700,
+        "x": 500,
+        "y": 940,
         "wires": [
             [
                 "9c14eaf81979fa33"
@@ -570,19 +510,18 @@
         "type": "function",
         "z": "0e46594e7c184d66",
         "name": "",
-        "func": "//msg.payload = msg.payload[59];\nvar tong  = msg.payload;\nvar t = 0;\nvar temp = 0 ;\nfor(var i = 0 ; i < tong; i++)\n{\n    msg.payload = msg.payload[i];\n    temp = msg.payload.temp;\n    t += temp;\n}\nt = t/(tong - 1);\nmsg.payload = t;\nreturn msg;",
+        "func": "msg.payload = msg.payload[59];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 760,
-        "y": 760,
+        "x": 720,
+        "y": 920,
         "wires": [
             [
-                "4e032dfe025d4418",
                 "355688d2526c2fe9",
-                "4da23ce561c41930"
+                "4e032dfe025d4418"
             ]
         ]
     },
@@ -607,102 +546,12 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 220,
-        "y": 700,
+        "x": 260,
+        "y": 940,
         "wires": [
             [
-                "c976fbc103a8ef82",
-                "fbef59aa1d935673"
+                "c976fbc103a8ef82"
             ]
-        ]
-    },
-    {
-        "id": "4e032dfe025d4418",
-        "type": "function",
-        "z": "0e46594e7c184d66",
-        "name": "",
-        "func": "var temp = msg.payload.temp;\nmsg.payload = temp;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1000,
-        "y": 600,
-        "wires": [
-            [
-                "9181774f650fd508"
-            ]
-        ]
-    },
-    {
-        "id": "9181774f650fd508",
-        "type": "ui_gauge",
-        "z": "0e46594e7c184d66",
-        "name": "",
-        "group": "bdeaa1cd139496b7",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "gauge",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": 10,
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "className": "",
-        "x": 1230,
-        "y": 640,
-        "wires": []
-    },
-    {
-        "id": "12228e1ee0fbfa5b",
-        "type": "ui_chart",
-        "z": "0e46594e7c184d66",
-        "name": "",
-        "order": 0,
-        "width": 0,
-        "height": 0,
-        "label": "chart",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1F77B4",
-            "#AEC7E8",
-            "#FF7F0E",
-            "#2CA02C",
-            "#98DF8A",
-            "#D62728",
-            "#FF9896",
-            "#9467BD",
-            "#C5B0D5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1130,
-        "y": 840,
-        "wires": [
-            []
         ]
     },
     {
@@ -716,59 +565,46 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 980,
-        "y": 720,
+        "x": 1020,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fd9d20c55a0a574f",
+        "type": "mqtt in",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "topic": "dienap",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "4db4869f657f6363",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 290,
+        "y": 660,
         "wires": [
             [
-                "5202a2d65977a0b5"
+                "c4dbc9abfab181d9",
+                "ff2e464654a1baa8"
             ]
         ]
     },
     {
-        "id": "5202a2d65977a0b5",
-        "type": "ui_text",
-        "z": "0e46594e7c184d66",
-        "group": "bdeaa1cd139496b7",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "text",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 1210,
-        "y": 740,
-        "wires": []
-    },
-    {
-        "id": "fbef59aa1d935673",
-        "type": "mongodb-aleph-in",
-        "z": "0e46594e7c184d66",
-        "mongodb": "151d5bb044d8af6d",
-        "name": "",
-        "collection": "bang1",
-        "operation": "count",
-        "x": 470,
-        "y": 640,
-        "wires": [
-            [
-                "9c14eaf81979fa33"
-            ]
-        ]
-    },
-    {
-        "id": "4da23ce561c41930",
+        "id": "c4dbc9abfab181d9",
         "type": "ui_gauge",
         "z": "0e46594e7c184d66",
         "name": "",
         "group": "bdeaa1cd139496b7",
-        "order": 6,
+        "order": 5,
         "width": 0,
         "height": 0,
         "gtype": "gage",
-        "title": "TRUNG BINH",
-        "label": "units",
+        "title": "ĐIỆN ÁP",
+        "label": "V",
         "format": "{{value}}",
         "min": 0,
         "max": 10,
@@ -780,8 +616,192 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 1000,
-        "y": 500,
+        "x": 520,
+        "y": 700,
         "wires": []
+    },
+    {
+        "id": "92934b3be2536cc9",
+        "type": "mqtt in",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "topic": "dongdien",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "4db4869f657f6363",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 300,
+        "y": 820,
+        "wires": [
+            [
+                "dfe542367c5af962",
+                "c4e36d285267094b"
+            ]
+        ]
+    },
+    {
+        "id": "dfe542367c5af962",
+        "type": "ui_gauge",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "group": "bdeaa1cd139496b7",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "DÒNG ĐIỆN",
+        "label": "A",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "3",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 530,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "4e032dfe025d4418",
+        "type": "function",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "func": "var temp = msg.payload.temp;\nmsg.payload = temp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "90b3d94bb5e807fc",
+        "type": "ui_text",
+        "z": "0e46594e7c184d66",
+        "group": "bdeaa1cd139496b7",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "ÁNH SÁNG",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 530,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "03653069eed494a1",
+        "type": "delay",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "minute",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1110,
+        "y": 320,
+        "wires": [
+            [
+                "fd77a195b1f9dfe1"
+            ]
+        ]
+    },
+    {
+        "id": "36df96ddac73ac6a",
+        "type": "function",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "func": "var a = msg.payload;\nvar GlobalTemp = {};\nGlobalTemp.a = a;\nglobal.set(\"Temp\",GlobalTemp);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 320,
+        "wires": [
+            [
+                "185063f1a4babf8f"
+            ]
+        ]
+    },
+    {
+        "id": "ff2e464654a1baa8",
+        "type": "function",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "func": "var a = msg.payload;\nvar Globalvoltage = {};\nGlobalvoltage.a = a;\nglobal.set(\"Voltage\",Globalvoltage);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 620,
+        "wires": [
+            [
+                "185063f1a4babf8f"
+            ]
+        ]
+    },
+    {
+        "id": "c4e36d285267094b",
+        "type": "function",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "func": "var a = msg.payload;\nvar GlobalAmpe = {};\nGlobalAmpe.a = a;\nglobal.set(\"Ampe\",GlobalAmpe);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 780,
+        "wires": [
+            [
+                "185063f1a4babf8f"
+            ]
+        ]
+    },
+    {
+        "id": "a43f8e91a5bf6da5",
+        "type": "function",
+        "z": "0e46594e7c184d66",
+        "name": "",
+        "func": "var a = msg.payload;\nvar GlobalHumi = {};\nGlobalHumi.a = a;\nglobal.set(\"Humi\",GlobalHumi);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 160,
+        "wires": [
+            [
+                "185063f1a4babf8f"
+            ]
+        ]
     }
 ]
